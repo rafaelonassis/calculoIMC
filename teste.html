@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Calculo IMC</title>
+    <script type="text/javascript">
+        function calcular(){
+    		let form = document.getElementById("imc");	
+    		let peso = +form.peso.value;
+    		let metros = +form.metros.value;
+    		let centimetros = +form.centimetros.value;
+			
+    		let altura = (metros * 100 + centimetros) / 100;
+			
+    		let valorIMC = peso / (altura * altura);
+    		
+    		if (valorIMC < 18.5){
+    			alert('Magreza: Seu IMC é ' + valorIMC.toFixed(2));
+    		} else if (valorIMC >= 18.5 && valorIMC <= 24.9){
+    			alert('Normal: Seu IMC é ' + valorIMC.toFixed(2));
+    		} else if (valorIMC >= 25 && valorIMC <= 30){
+    			alert('Sobrepeso: Seu IMC é ' + valorIMC.toFixed(2));
+    		} else {
+    			alert('Obesidade: Seu IMC é ' + valorIMC.toFixed(2));
+    		}
+    	}
+    </script>
+</head>
+<body>
+    <form id="imc">
+    <fieldset>
+    	<legend>Calculo IMC</legend>
+    	
+        <label for="peso">Qual teu peso em kilos:</label>
+        <input name="peso" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+    
+		<br>
+
+        <label for="metros">Quantos metros você tem:</label>
+        <input name="metros" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+    
+		<br>
+
+        <label for="centimetros">Quantos centimetros voce tem:</label>
+        <input name="centimetros" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"/>
+    
+		<br>
+            
+        <button onclick="calcular();">Calcular</button>
+    </fieldset>
+    </form>
+</body>
+</html>
